@@ -7,6 +7,9 @@ import { ItemsComponent } from './components/items/items.component';
 import { ItemService } from './services/item.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { MaterialModule } from './material.module';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { AddItemComponent } from './components/add-item/add-item.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AngularFireStoreModule
+    AngularFireStoreModule,
+    MaterialModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ItemService],
   bootstrap: [AppComponent]
